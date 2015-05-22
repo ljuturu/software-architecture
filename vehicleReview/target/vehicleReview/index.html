@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+	<title>Vehicle Absolute Review</title>
+	<script>
+		function validateApiKey()
+		{			
+			var key = document.forms["edmundsForm"]["apiKey"].value;
+			var vin = document.forms["edmundsForm"]["vin"].value;
+			var zc = document.forms["edmundsForm"]["zc"].value;
+			if(vin == null || vin == "")
+			{
+				alert("VIN field cannot be empty");
+				return false;
+			}
+			if(zc == null || zc == "" || zc.length != 5)
+			{
+				alert ("Zip Code is not valid. Should be a five-digit number");
+				return false;
+			}
+			if(key==null || key=="" || key.length != 24)
+			{
+				alert("Length of API Key should be 24 characters");
+				return false;
+			}
+		}
+	</script>
+
+</head>
+<body>
+
+	<h2>Welcome to Edmunds.com Vehicle Absolute Review!</h2>
+	<br>
+	<form name="edmundsForm" method="post" action="EdmundsTest"
+		onsubmit="return validateApiKey()">
+		<table border=0>
+			<tr>
+				<td>VIN:</td>
+				<td><input type="text" name="vin" id="vin"><br></td>
+			</tr>
+			<tr>
+				<td>Zip Code:</td>
+				<td><input type="text" name="zc" id="zc"><br></td>
+			</tr>
+			<tr>
+				<td>API Key:</td>
+				<td><input type="text" name="apiKey" id="apiKey"><br></td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+			<tr>
+				<td><input type="submit" value="Get Review"></td>
+				<td><input type="reset" value="Clear All"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
